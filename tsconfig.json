@@ -20,5 +20,5 @@
     "jsx": "react",
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["react-app-env.d.ts", "**/*.ts", "**/*.tsx"]
 }
