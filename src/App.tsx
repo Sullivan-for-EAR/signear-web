@@ -1,7 +1,9 @@
 import React from 'react';
 
+import Box from '@/components/Box';
+
 const App: React.FC = () => {
-  return <div>signear-web</div>;
+  return <Box>signear-web</Box>;
 };
 
 export default App;
