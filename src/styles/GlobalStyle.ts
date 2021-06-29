@@ -19,6 +19,10 @@ const GlobalStyle = createGlobalStyle`
     background-color: #E5E5E5;
   }
 
+  #root {
+    flex: 1;
+  }
+
   svg, img {
     max-width: 100%;
     max-height: 100%;

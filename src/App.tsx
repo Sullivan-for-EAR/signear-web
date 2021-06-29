@@ -1,12 +1,11 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-import Flex from './components/Flex';
-import { DefaultLayoutProvider } from './templates/DefaultLayout';
-import DefaultSidebar from './components/DefaultSidebar';
-import Box from './components/Box';
+import Flex from '@/components/Flex';
+import { DefaultLayoutProvider } from '@/templates/DefaultLayout';
+import DefaultSidebar from '@/components/DefaultSidebar';
 
-import TodayEars from './pages/todayEars';
+import TodayEars from '@/pages/todayEars';
 
 const App: React.FC = () => {
   return (
@@ -14,9 +13,9 @@ const App: React.FC = () => {
       <DefaultLayoutProvider>
         <DefaultSidebar />
         <BrowserRouter>
-          <Box p="36px 33px">
-            <TodayEars />
-          </Box>
+          <Flex p="36px 33px" flex="1 0 auto">
+            <Route path="/" exact component={TodayEars} />
+          </Flex>
         </BrowserRouter>
       </DefaultLayoutProvider>
     </Flex>
