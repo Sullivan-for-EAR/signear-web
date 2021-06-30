@@ -1,22 +1,20 @@
-import React, { createContext, useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
-const DefaultLayout = createContext([{}, () => undefined]);
+import Flex from '@/components/Flex';
+import DefaultSidebar from '@/components/DefaultSidebar';
+interface LayoutProps {
+  children: React.ReactNode;
+}
 
-const DefaultLayoutProvider = ({ children }: { children: React.ReactNode }) => {
-  const [layout, setLayout] = useState({
-    type: 'default',
-    data: {},
-  });
+const DefaultLayout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <DefaultLayout.Provider value={[layout, setLayout]}>
-      {children}
-    </DefaultLayout.Provider>
+    <Flex flex="1">
+      <DefaultSidebar />
+      <Flex flexDirection="column" p="36px 33px" flex="1 0 auto">
+        {children}
+      </Flex>
+    </Flex>
   );
 };
 
-export { DefaultLayout, DefaultLayoutProvider };
-
-DefaultLayoutProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+export default DefaultLayout;
