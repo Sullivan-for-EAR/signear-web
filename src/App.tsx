@@ -11,8 +11,8 @@ const App: React.FC = () => {
   return (
     <Flex height="100%">
       <DefaultLayoutProvider>
-        <DefaultSidebar />
         <BrowserRouter>
+          <DefaultSidebar />
           <Flex p="36px 33px" flex="1 0 auto">
             <Route path="/" exact component={TodayEars} />
           </Flex>

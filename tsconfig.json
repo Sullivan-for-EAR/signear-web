@@ -19,10 +19,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "noFallthroughCasesInSwitch": true,
-    "paths": {
-      "@/*": ["../src/*"]
-    }
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
     "react-app-env.d.ts",
