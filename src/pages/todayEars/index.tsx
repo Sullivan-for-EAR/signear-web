@@ -11,4 +11,3 @@ const TodayEars: React.FC = () => {
 };
 
 export default TodayEars;
-
