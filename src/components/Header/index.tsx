@@ -11,7 +11,7 @@ const DefaultHeader: React.FC = () => {
         <Box fontSize="24px" fontWeight="700">
           헤더 타이틀
         </Box>
-        <Flex>
+        <Flex alignItems="center">
           <Box mr="33px" width="14px" height="16px">
             <AlarmIcon />
           </Box>

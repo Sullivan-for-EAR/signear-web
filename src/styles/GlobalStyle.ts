@@ -8,10 +8,6 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 
-  html, body {
-    height: 100%;
-  }
-
   body {
     display: flex;
     min-height: 100vh;
