@@ -24,7 +24,9 @@ const TodayEars: React.FC = () => {
         display="grid"
         gridTemplateColumns="repeat(2, 1fr)"
         gridColumnGap="30px"
+        mt="18px"
       >
+        <DetailCard />
         <DetailCard />
       </Box>
     </Flex>

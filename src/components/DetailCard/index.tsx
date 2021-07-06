@@ -19,7 +19,7 @@ const DetailCard: React.FC = () => {
           더보기
         </Box>
       </Flex>
-      <Box fontSize="12px" px="32px">
+      <Box fontSize="12px" px="32px" mb="18px">
         담당지역
       </Box>
       <Flex

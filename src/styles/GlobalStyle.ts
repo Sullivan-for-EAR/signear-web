@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     min-height: 100vh;
     margin: 0;
-    background-color: #E5E5E5;
+    background-color: #F7F8FC;
   }
 
   #root {
