@@ -1,4 +1,6 @@
 import React from 'react';
+import styled from 'styled-components';
+
 import Flex from '@/components/Flex';
 import Box from '@/components/Box';
 import Grid from '@/components/Grid';
@@ -31,6 +33,12 @@ const tableData = [
   },
 ];
 
+const List = styled(Grid)`
+  &:nth-child(2n) {
+    background-color: #f7f8fc;
+  }
+`;
+
 const TableContent: React.FC<TableContentProps> = ({ title }) => {
   return (
     <Flex
@@ -43,34 +51,34 @@ const TableContent: React.FC<TableContentProps> = ({ title }) => {
       <Box m="32px">{title}</Box>
       <Grid
         pb="12px"
-        borderBottom="1.5px solid #DFE0EB"
+        borderBottom="1px solid #DFE0EB"
         color="#9FA2B4"
         fontWeight="700"
       >
-        <Flex gridColumn="1 / 7">내용</Flex>
-        <Flex gridColumn="7 / 9">예약자</Flex>
-        <Flex gridColumn="9 / 11">날짜</Flex>
-        <Flex gridColumn="11 / -1">상태</Flex>
+        <Flex gridColumn="1 / 6">내용</Flex>
+        <Flex gridColumn="6 / 9">예약자</Flex>
+        <Flex gridColumn="9 / 12">날짜</Flex>
+        <Flex gridColumn="12 / -1">상태</Flex>
       </Grid>
 
       {tableData.map((data) => (
-        <Grid key={data.id} py="28px" borderBottom="1px solid #DFE0EB">
-          <Flex flexDirection="column" gridColumn="1 / 7">
+        <List key={data.id} py="28px" borderTop="1px solid #DFE0EB">
+          <Flex flexDirection="column" gridColumn="1 / 6">
             <Box>{data.text}</Box>
             <Box mt="4px">수어통역</Box>
           </Flex>
-          <Flex flexDirection="column" gridColumn="7 / 9">
+          <Flex flexDirection="column" gridColumn="6 / 9">
             <Box>{data.name}</Box>
             <Box mt="4px">010-1234-5678</Box>
           </Flex>
-          <Flex flexDirection="column" gridColumn="9 / 11">
+          <Flex flexDirection="column" gridColumn="9 / 12">
             <Box>{data.date}</Box>
             <Box mt="4px">11:00 ~ 12:00</Box>
           </Flex>
-          <Flex gridColumn="11 / -1" alignItems="center">
+          <Flex gridColumn="12 / -1" alignItems="center">
             {data.status}
           </Flex>
-        </Grid>
+        </List>
       ))}
     </Flex>
   );
