@@ -14,11 +14,11 @@ const DefaultSidebar: React.FC = () => {
           },
           {
             text: '예약관리',
-            href: `/12`,
+            href: `/reservation`,
           },
           {
             text: '사용자 관리',
-            href: `/11`,
+            href: `/userManage`,
           },
         ]}
       />

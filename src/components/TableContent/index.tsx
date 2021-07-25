@@ -57,7 +57,9 @@ const TableContent: React.FC<TableContentProps> = ({ title }) => {
       borderRadius="8px"
       border="1px solid #DFE0EB"
     >
-      <Box m="32px">{title}</Box>
+      <Box m="32px" fontSize="20px" fontWeight="500">
+        {title}
+      </Box>
       <Grid
         pb="12px"
         borderBottom="1px solid #DFE0EB"
