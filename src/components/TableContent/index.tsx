@@ -6,8 +6,11 @@ import Box from '@/components/Box';
 import Grid from '@/components/Grid';
 import Label from '@/components/Label';
 
+import { ReactComponent as MoreIcon } from '../../images/icons-more.svg';
+
 interface TableContentProps {
   title: string;
+  needMoreIcon?: boolean;
 }
 
 interface TabelDataType {
@@ -48,7 +51,10 @@ const List = styled(Grid)`
   }
 `;
 
-const TableContent: React.FC<TableContentProps> = ({ title }) => {
+const TableContent: React.FC<TableContentProps> = ({
+  title,
+  needMoreIcon = true,
+}) => {
   return (
     <Flex
       flexDirection="column"
@@ -68,12 +74,12 @@ const TableContent: React.FC<TableContentProps> = ({ title }) => {
       >
         <Flex gridColumn="1 / 6">내용</Flex>
         <Flex gridColumn="6 / 9">예약자</Flex>
-        <Flex gridColumn="9 / 12">날짜</Flex>
-        <Flex gridColumn="12 / -1">상태</Flex>
+        <Flex gridColumn={needMoreIcon ? '9 / 11' : '9 / 12'}>날짜</Flex>
+        <Flex gridColumn={needMoreIcon ? '11 / 12' : '12 / -1'}>상태</Flex>
       </Grid>
 
       {tableData.map((data) => (
-        <List key={data.id} py="28px" borderTop="1px solid #DFE0EB">
+        <List key={data.id} py="28px" borderBottom="1px solid #DFE0EB">
           <Flex flexDirection="column" gridColumn="1 / 6">
             <Box>{data.text}</Box>
             <Box mt="4px" color="#C5C7CD">
@@ -86,13 +92,28 @@ const TableContent: React.FC<TableContentProps> = ({ title }) => {
               010-1234-5678
             </Box>
           </Flex>
-          <Flex flexDirection="column" gridColumn="9 / 12">
+          <Flex
+            flexDirection="column"
+            gridColumn={needMoreIcon ? '9 / 11' : '9 / 12'}
+          >
             <Box>{data.date}</Box>
             <Box mt="4px">11:00 ~ 12:00</Box>
           </Flex>
-          <Flex gridColumn="12 / -1" alignItems="center">
+          <Flex
+            gridColumn={needMoreIcon ? '11 / 12' : '12 / -1'}
+            alignItems="center"
+          >
             <Label text={data.status} />
           </Flex>
+          {needMoreIcon && (
+            <Flex
+              gridColumn="12 / -1"
+              justifyContent="flex-end"
+              alignItems="center"
+            >
+              <MoreIcon />
+            </Flex>
+          )}
         </List>
       ))}
     </Flex>
