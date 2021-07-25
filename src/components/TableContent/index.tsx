@@ -4,32 +4,41 @@ import styled from 'styled-components';
 import Flex from '@/components/Flex';
 import Box from '@/components/Box';
 import Grid from '@/components/Grid';
+import Label from '@/components/Label';
 
 interface TableContentProps {
   title: string;
 }
 
-const tableData = [
+interface TabelDataType {
+  id: number;
+  text: string;
+  name: string;
+  date: string;
+  status: '예약 확정' | '읽지 않음' | '예약 거절';
+}
+
+const tableData: TabelDataType[] = [
   {
     id: 1,
     text: 'first',
     name: 'kim',
     date: '2021-11-11',
-    status: '예약 완료',
+    status: '예약 확정',
   },
   {
     id: 2,
     text: 'second',
     name: 'lee',
     date: '2021-11-12',
-    status: '예약 신청',
+    status: '예약 거절',
   },
   {
     id: 3,
     text: 'third',
     name: 'choi',
     date: '2021-11-13',
-    status: '예약 신청',
+    status: '읽지 않음',
   },
 ];
 
@@ -65,18 +74,22 @@ const TableContent: React.FC<TableContentProps> = ({ title }) => {
         <List key={data.id} py="28px" borderTop="1px solid #DFE0EB">
           <Flex flexDirection="column" gridColumn="1 / 6">
             <Box>{data.text}</Box>
-            <Box mt="4px">수어통역</Box>
+            <Box mt="4px" color="#C5C7CD">
+              수어통역
+            </Box>
           </Flex>
           <Flex flexDirection="column" gridColumn="6 / 9">
             <Box>{data.name}</Box>
-            <Box mt="4px">010-1234-5678</Box>
+            <Box mt="4px" color="#C5C7CD">
+              010-1234-5678
+            </Box>
           </Flex>
           <Flex flexDirection="column" gridColumn="9 / 12">
             <Box>{data.date}</Box>
             <Box mt="4px">11:00 ~ 12:00</Box>
           </Flex>
           <Flex gridColumn="12 / -1" alignItems="center">
-            {data.status}
+            <Label text={data.status} />
           </Flex>
         </List>
       ))}

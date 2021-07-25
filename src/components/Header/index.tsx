@@ -6,6 +6,7 @@ import { ReactComponent as AlarmIcon } from '../../images/icons-alarm.svg';
 import { ReactComponent as NewAlarmIcon } from '../../images/icons-new-alarm.svg';
 
 const DefaultHeader: React.FC = () => {
+  const currentAlarm = true;
   return (
     <Box mb="38px">
       <Flex justifyContent="space-between" alignItems="center" mb="8px">
@@ -14,7 +15,7 @@ const DefaultHeader: React.FC = () => {
         </Box>
         <Flex>
           <Box mr="32px" width="16px" height="16px">
-            <NewAlarmIcon />
+            {currentAlarm ? <NewAlarmIcon /> : <AlarmIcon />}
           </Box>
           <Box paddingLeft="32px" borderLeft="2px solid #DFE0EB">
             강동 1 테스트
