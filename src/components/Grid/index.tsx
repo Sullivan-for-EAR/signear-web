@@ -6,9 +6,9 @@ import Wrapper from '@/components/Wrapper';
 
 const Grid = styled(Wrapper).attrs({
   display: 'grid',
-  gridTemplateColumns: 'repeat(12, 1fr)',
+  gridTemplateColumns: 'repeat(15, 1fr)',
   gridTemplateRows: 'auto',
-  gridColumnGap: '12px',
+  gridColumnGap: '20px',
 })<BoxProps>``;
 
 export default Grid;

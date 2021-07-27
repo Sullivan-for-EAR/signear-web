@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import Flex from '@/components/Flex';
 import Box from '@/components/Box';
@@ -10,7 +9,6 @@ import { ReactComponent as MoreIcon } from '../../images/icons-more.svg';
 
 interface TableContentProps {
   title: string;
-  needMoreIcon?: boolean;
 }
 
 interface TabelDataType {
@@ -18,6 +16,7 @@ interface TabelDataType {
   text: string;
   name: string;
   date: string;
+  purpose: string;
   status: '예약 확정' | '읽지 않음' | '예약 거절';
 }
 
@@ -26,35 +25,29 @@ const tableData: TabelDataType[] = [
     id: 1,
     text: 'first',
     name: 'kim',
-    date: '2021-11-11',
+    date: '오전 10:00 ~ 오전 11:30',
+    purpose: '수어 통역',
     status: '예약 확정',
   },
   {
     id: 2,
     text: 'second',
     name: 'lee',
-    date: '2021-11-12',
+    date: '오전 11:00 ~ 오후 13:30',
+    purpose: '화상 통역',
     status: '예약 거절',
   },
   {
     id: 3,
     text: 'third',
     name: 'choi',
-    date: '2021-11-13',
+    date: '오후 15:00 ~ 오후 17:30',
+    purpose: '수어 통역',
     status: '읽지 않음',
   },
 ];
 
-const List = styled(Grid)`
-  &:nth-child(2n) {
-    background-color: #f7f8fc;
-  }
-`;
-
-const TableContent: React.FC<TableContentProps> = ({
-  title,
-  needMoreIcon = true,
-}) => {
+const TableContent: React.FC<TableContentProps> = ({ title }) => {
   return (
     <Flex
       flexDirection="column"
@@ -67,54 +60,82 @@ const TableContent: React.FC<TableContentProps> = ({
         {title}
       </Box>
       <Grid
-        pb="12px"
-        borderBottom="1px solid #DFE0EB"
-        color="#9FA2B4"
-        fontWeight="700"
+        p="12px 0 9px"
+        borderBottom="1px solid"
+        borderTop="1px solid"
+        borderColor="#DFE0EB"
+        backgroundColor="#F4F4F4"
+        fontSize="15px"
       >
-        <Flex gridColumn="1 / 6">내용</Flex>
-        <Flex gridColumn="6 / 9">예약자</Flex>
-        <Flex gridColumn={needMoreIcon ? '9 / 11' : '9 / 12'}>날짜</Flex>
-        <Flex gridColumn={needMoreIcon ? '11 / 12' : '12 / -1'}>상태</Flex>
+        <Flex gridColumn="1 / 2" justifyContent="center">
+          NO
+        </Flex>
+        <Flex gridColumn="2 / 5" justifyContent="center">
+          날짜 및 시간
+        </Flex>
+        <Flex gridColumn="5 / 7" justifyContent="center">
+          담당자
+        </Flex>
+        <Flex gridColumn="7 / 11" justifyContent="center">
+          내용
+        </Flex>
+        <Flex gridColumn="11 / 13" justifyContent="center">
+          예약자
+        </Flex>
+        <Flex gridColumn="13 / 15" justifyContent="center">
+          상태
+        </Flex>
       </Grid>
 
       {tableData.map((data) => (
-        <List key={data.id} py="28px" borderBottom="1px solid #DFE0EB">
-          <Flex flexDirection="column" gridColumn="1 / 6">
+        <Grid key={data.id} py="28px" px="0" borderBottom="1px solid #DFE0EB">
+          <Flex
+            flexDirection="column"
+            gridColumn="1 / 2"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Box>{data.id}</Box>
+          </Flex>
+          <Flex flexDirection="column" gridColumn="2 / 5" alignItems="center">
+            <Box>{data.date}</Box>
+            <Box mt="4px" color="#C5C7CD">
+              {data.purpose}
+            </Box>
+          </Flex>
+          <Flex flexDirection="column" gridColumn="5 / 7" alignItems="center">
+            <Box>{data.name}</Box>
+            <Box mt="4px" color="#C5C7CD">
+              010-1234-5678
+            </Box>
+          </Flex>
+          <Flex flexDirection="column" gridColumn="7 / 11" alignItems="center">
             <Box>{data.text}</Box>
             <Box mt="4px" color="#C5C7CD">
               수어통역
             </Box>
           </Flex>
-          <Flex flexDirection="column" gridColumn="6 / 9">
+          <Flex flexDirection="column" gridColumn="11 / 13" alignItems="center">
             <Box>{data.name}</Box>
             <Box mt="4px" color="#C5C7CD">
               010-1234-5678
             </Box>
           </Flex>
           <Flex
-            flexDirection="column"
-            gridColumn={needMoreIcon ? '9 / 11' : '9 / 12'}
-          >
-            <Box>{data.date}</Box>
-            <Box mt="4px">11:00 ~ 12:00</Box>
-          </Flex>
-          <Flex
-            gridColumn={needMoreIcon ? '11 / 12' : '12 / -1'}
+            gridColumn="13 / 15"
             alignItems="center"
+            justifyContent="center"
           >
             <Label text={data.status} />
           </Flex>
-          {needMoreIcon && (
-            <Flex
-              gridColumn="12 / -1"
-              justifyContent="flex-end"
-              alignItems="center"
-            >
-              <MoreIcon />
-            </Flex>
-          )}
-        </List>
+          <Flex
+            gridColumn="15 / -1"
+            justifyContent="flex-end"
+            alignItems="center"
+          >
+            <MoreIcon />
+          </Flex>
+        </Grid>
       ))}
     </Flex>
   );
