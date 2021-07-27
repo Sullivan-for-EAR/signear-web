@@ -4,12 +4,9 @@ import Flex from '@/components/Flex';
 import Box from '@/components/Box';
 import Grid from '@/components/Grid';
 import Label from '@/components/Label';
+import Ellipsis from '@/components/Ellipsis';
 
 import { ReactComponent as MoreIcon } from '../../images/icons-more.svg';
-
-interface TableContentProps {
-  title: string;
-}
 
 interface TabelDataType {
   id: number;
@@ -17,13 +14,14 @@ interface TabelDataType {
   name: string;
   date: string;
   purpose: string;
-  status: '예약 확정' | '읽지 않음' | '예약 거절';
+  status: '예약 확정' | '읽지 않음' | '예약 거절' | '긴급 통역';
 }
 
 const tableData: TabelDataType[] = [
   {
     id: 1,
-    text: 'first',
+    text:
+      'firstdddddfirstdddddfirstdddddfirstdddddfirstdddddfirstdddddfirstdddddfirstddddd',
     name: 'kim',
     date: '오전 10:00 ~ 오전 11:30',
     purpose: '수어 통역',
@@ -45,20 +43,24 @@ const tableData: TabelDataType[] = [
     purpose: '수어 통역',
     status: '읽지 않음',
   },
+  {
+    id: 4,
+    text: 'fourth',
+    name: 'park',
+    date: '오후 19:00 ~ 오후 21:30',
+    purpose: '화상 통역',
+    status: '긴급 통역',
+  },
 ];
 
-const TableContent: React.FC<TableContentProps> = ({ title }) => {
+const TableContent: React.FC = () => {
   return (
     <Flex
       flexDirection="column"
       backgroundColor="white"
       flex="1 0 auto"
       borderRadius="8px"
-      border="1px solid #DFE0EB"
     >
-      <Box m="32px" fontSize="20px" fontWeight="500">
-        {title}
-      </Box>
       <Grid
         p="12px 0 9px"
         borderBottom="1px solid"
@@ -110,7 +112,9 @@ const TableContent: React.FC<TableContentProps> = ({ title }) => {
             </Box>
           </Flex>
           <Flex flexDirection="column" gridColumn="7 / 11" alignItems="center">
-            <Box>{data.text}</Box>
+            <Box maxWidth="400px">
+              <Ellipsis>{data.text}</Ellipsis>
+            </Box>
             <Box mt="4px" color="#C5C7CD">
               수어통역
             </Box>
@@ -130,7 +134,7 @@ const TableContent: React.FC<TableContentProps> = ({ title }) => {
           </Flex>
           <Flex
             gridColumn="15 / -1"
-            justifyContent="flex-end"
+            justifyContent="center"
             alignItems="center"
           >
             <MoreIcon />
