@@ -5,7 +5,7 @@ import Tab from '@/components/Tab';
 
 const DefaultSidebar: React.FC = () => {
   return (
-    <Flex backgroundColor="#363740" py="48px" minWidth="255px">
+    <Flex backgroundColor="#F9F9F9" py="48px" minWidth="225px">
       <Tab
         links={[
           {

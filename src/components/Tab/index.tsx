@@ -17,13 +17,13 @@ const Tab: React.FC<
       {links.map(({ text, href }) => (
         <Link key={text} to={href}>
           <ActiveLink
-            p="18px 47px"
-            color="#A4A6B3"
+            p="18px 0px"
+            mx="45px"
+            borderBottom="1px solid #E5E5E5"
+            fontSize="20px"
+            fontWeight="500"
             activeStyles={{
-              color: '#DDE2FF',
-              borderLeft: '2px solid',
-              backgroundColor: 'rgba(159, 162, 180, 0.08)',
-              padding: '18px 38px',
+              color: '#0A84FF',
             }}
             isSamePath={isSamePath}
             href={href}
