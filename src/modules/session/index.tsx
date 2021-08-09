@@ -21,6 +21,10 @@ const sessionSlice = createSlice({
       state.accessToken = action.payload.accessToken;
       state.status = 'loggedIn';
     },
+    deleteSession: (state) => {
+      state.accessToken = null;
+      state.status = 'loggedOut';
+    },
   },
 });
 
@@ -29,4 +33,5 @@ export default sessionSlice.reducer;
 export const {
   createSessionRequest,
   createSessionSuccess,
+  deleteSession,
 } = sessionSlice.actions;

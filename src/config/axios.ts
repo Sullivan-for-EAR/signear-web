@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: '',
+  baseURL: 'http://api.signear.com:8086/',
   timeout: 60000,
   withCredentials: true,
   headers: {
-    Accept: '',
+    accept: 'application/json',
   },
 });
 

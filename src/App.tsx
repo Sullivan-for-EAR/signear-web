@@ -1,5 +1,8 @@
 import React from 'react';
+import { SWRConfig } from 'swr';
 import { BrowserRouter, Route } from 'react-router-dom';
+
+import { fetcher } from '@/config/axios';
 
 import Flex from '@/components/Flex';
 import DefaultLayout from '@/templates/DefaultLayout';
@@ -13,9 +16,11 @@ const App: React.FC = () => {
     <Flex height="100%">
       <BrowserRouter>
         <DefaultLayout>
-          <Route path="/" exact component={TodayEars} />
-          <Route path="/reservation" component={Reservation} />
-          <Route path="/userManage" component={UserManage} />
+          <SWRConfig value={{ fetcher }}>
+            <Route path="/" exact component={TodayEars} />
+            <Route path="/reservation" component={Reservation} />
+            <Route path="/userManage" component={UserManage} />
+          </SWRConfig>
         </DefaultLayout>
       </BrowserRouter>
     </Flex>
