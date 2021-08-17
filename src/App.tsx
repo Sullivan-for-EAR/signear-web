@@ -6,6 +6,7 @@ import { fetcher } from '@/config/axios';
 
 import Flex from '@/components/Flex';
 import DefaultLayout from '@/templates/DefaultLayout';
+import { SessionProvider } from '@/components/SessionProvider';
 
 import TodayEars from '@/pages/todayEars';
 import Reservation from '@/pages/reservation';
@@ -15,13 +16,15 @@ const App: React.FC = () => {
   return (
     <Flex height="100%">
       <BrowserRouter>
-        <DefaultLayout>
-          <SWRConfig value={{ fetcher }}>
-            <Route path="/" exact component={TodayEars} />
-            <Route path="/reservation" component={Reservation} />
-            <Route path="/userManage" component={UserManage} />
-          </SWRConfig>
-        </DefaultLayout>
+        <SessionProvider>
+          <DefaultLayout>
+            <SWRConfig value={{ fetcher }}>
+              <Route path="/" exact component={TodayEars} />
+              <Route path="/reservation" component={Reservation} />
+              <Route path="/userManage" component={UserManage} />
+            </SWRConfig>
+          </DefaultLayout>
+        </SessionProvider>
       </BrowserRouter>
     </Flex>
   );
