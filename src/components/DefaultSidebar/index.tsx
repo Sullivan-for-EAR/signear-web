@@ -19,7 +19,7 @@ const DefaultSidebar: React.FC = () => {
         links={[
           {
             text: '오늘의 이어',
-            href: '/today',
+            href: '/todayEars',
           },
           {
             text: '예약관리',

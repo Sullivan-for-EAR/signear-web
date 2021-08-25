@@ -19,7 +19,7 @@ const App: React.FC = () => {
         <SessionProvider>
           <DefaultLayout>
             <SWRConfig value={{ fetcher }}>
-              <Route path="/today" exact component={TodayEars} />
+              <Route path="/todayEars" exact component={TodayEars} />
               <Route path="/reservation" component={Reservation} />
               <Route path="/userManage" component={UserManage} />
             </SWRConfig>
