@@ -3,7 +3,7 @@ import { AppThunk } from '@/store';
 import { createSessionSuccess, deleteSession } from '@/modules/session/index';
 import { createAccessToken } from '@/modules/session/requests';
 
-export const initializeSession = ({
+export const creatSessionAndRedirect = ({
   email,
   password,
 }: {
@@ -14,7 +14,7 @@ export const initializeSession = ({
     const sessionResult = await createAccessToken({ email, password });
     dispatch(
       createSessionSuccess({
-        accessToken: sessionResult.access_token,
+        accessToken: sessionResult,
       })
     );
   } catch {
@@ -24,7 +24,7 @@ export const initializeSession = ({
 
 export const destroySession = (): AppThunk => async (dispatch) => {
   try {
-    deleteSession();
+    dispatch(deleteSession());
   } catch {
     console.log('에러');
   }

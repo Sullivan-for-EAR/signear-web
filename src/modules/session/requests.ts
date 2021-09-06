@@ -11,9 +11,9 @@ interface TokenResponse {
 
 export const createAccessToken = async (
   params: LoginParams
-): Promise<TokenResponse> => {
-  const res = await API.post<TokenResponse>(
-    `login/sign?email=${params.email}&password=${params.password}`
+): Promise<string> => {
+  const res = await API.post<string>(
+    `/login/signuser?email=${params.email}&password=${params.password}`
   );
   return res.data;
 };

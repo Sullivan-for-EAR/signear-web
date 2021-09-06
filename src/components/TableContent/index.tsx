@@ -17,43 +17,11 @@ interface TabelDataType {
   status: '예약 확정' | '읽지 않음' | '예약 거절' | '긴급 통역';
 }
 
-const tableData: TabelDataType[] = [
-  {
-    id: 1,
-    text:
-      'firstdddddfirstdddddfirstdddddfirstdddddfirstdddddfirstdddddfirstdddddfirstddddd',
-    name: 'kim',
-    date: '오전 10:00 ~ 오전 11:30',
-    purpose: '수어 통역',
-    status: '예약 확정',
-  },
-  {
-    id: 2,
-    text: 'second',
-    name: 'lee',
-    date: '오전 11:00 ~ 오후 13:30',
-    purpose: '화상 통역',
-    status: '예약 거절',
-  },
-  {
-    id: 3,
-    text: 'third',
-    name: 'choi',
-    date: '오후 15:00 ~ 오후 17:30',
-    purpose: '수어 통역',
-    status: '읽지 않음',
-  },
-  {
-    id: 4,
-    text: 'fourth',
-    name: 'park',
-    date: '오후 19:00 ~ 오후 21:30',
-    purpose: '화상 통역',
-    status: '긴급 통역',
-  },
-];
+interface TableContentType {
+  tableData: TabelDataType[];
+}
 
-const TableContent: React.FC = () => {
+const TableContent: React.FC<TableContentType> = ({ tableData }) => {
   return (
     <Flex
       flexDirection="column"

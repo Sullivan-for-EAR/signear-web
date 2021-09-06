@@ -11,6 +11,7 @@ import { SessionProvider } from '@/components/SessionProvider';
 import TodayEars from '@/pages/todayEars';
 import Reservation from '@/pages/reservation';
 import UserManage from '@/pages/userManage';
+import Login from '@/pages/login';
 
 const App: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const App: React.FC = () => {
         <SessionProvider>
           <DefaultLayout>
             <SWRConfig value={{ fetcher }}>
+              <Route path="/Login" component={Login} />
               <Route path="/todayEars" exact component={TodayEars} />
               <Route path="/reservation" component={Reservation} />
               <Route path="/userManage" component={UserManage} />

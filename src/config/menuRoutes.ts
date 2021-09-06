@@ -35,6 +35,12 @@ const MenuRoutes: MenuRoute[] = [
     url: '/transManage',
     subTitle: '우리 센터에 예약 기록이 있는 사용자 목록입니다.',
   },
+  {
+    id: 6,
+    title: '로그인',
+    url: '/login',
+    subTitle: '로그인',
+  },
 ];
 
 export default MenuRoutes;

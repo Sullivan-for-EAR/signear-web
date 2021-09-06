@@ -18,18 +18,21 @@ export const SessionProvider: React.FC = ({ children }) => {
   useEffect(() => {
     function handleSessionState() {
       const { session } = store.getState();
+      console.log(session);
       if (session.accessToken) {
-        setSessionToken(session);
+        console.log(session.accessToken);
+        setSessionToken(session.accessToken);
       } else {
         removeSessionToken();
       }
     }
+    const unsubscribe = store.subscribe(() => {
+      handleSessionState();
+    });
     handleSessionState();
 
     return () => {
-      store.subscribe(() => {
-        handleSessionState();
-      });
+      unsubscribe();
     };
   }, [store, setSessionToken, removeSessionToken]);
 
