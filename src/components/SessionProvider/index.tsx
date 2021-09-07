@@ -18,9 +18,7 @@ export const SessionProvider: React.FC = ({ children }) => {
   useEffect(() => {
     function handleSessionState() {
       const { session } = store.getState();
-      console.log(session);
       if (session.accessToken) {
-        console.log(session.accessToken);
         setSessionToken(session.accessToken);
       } else {
         removeSessionToken();
